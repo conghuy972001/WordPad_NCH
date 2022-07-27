@@ -1,1 +1,1 @@
-# WordPad_NCH
+# WordPad_Nguyen Cong Huy
