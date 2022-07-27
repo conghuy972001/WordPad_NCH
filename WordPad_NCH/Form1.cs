@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,15 +70,19 @@ namespace WordPad_NCH
         Bitmap b;
         private void insertImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //OpenFileDialog imd = new OpenFileDialog();
-            //DialogResult re = imd.ShowDialog();
-           // if(re == DialogResult.OK)
-            //{
-                //i = Image.FromFile(imd.FileName);
-                //b = (Bitmap)i;
-               //pictureBox1.Image = b;
-           // }
+            OpenFileDialog img = new OpenFileDialog();
 
+            img.Title = "Insert new Image";
+            img.Filter = " Image Files (*.png)|*.png|All Files (*.*)|*.*";
+                if (img.ShowDialog() == DialogResult.OK)
+            {
+                createImage(img.FileName);
+            } 
+        }
+        private void createImage(string name)
+        {
+            Clipboard.SetImage(Image.FromFile(name));
+            textWord.Paste();
         }
     }
 }
